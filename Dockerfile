@@ -14,7 +14,7 @@ WORKDIR /app
 COPY package*.json ./
 
 #运行 npm install 在容器中安装依赖
-RUN cnpm install
+RUN npm install
 
 #拷贝其他文件到容器 /app 目录，分两次拷贝是因为保持 node_modules 一致
 COPY . .
