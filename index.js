@@ -38,12 +38,12 @@ http.createServer(async (req, res) => {
         deleteFolderRecursive(projectDir)
 
         // 拉取仓库最新代码
-        await execSync(`git clone https://github.com/Bnslarry/${data.repository.name}.git ${projectDir}`, {
+        execSync(`git clone https://github.com/Bnslarry/${data.repository.name}.git ${projectDir}`, {
             stdio: 'inherit',
         })
 
         // 复制 Dockerfile 到项目目录
-        fs.copyFileSync(path.resolve(__dirname, `./Dockerfile`), path.resolve(projectDir, './Dockerfile'))
+        fs.copyFileSync(path.resolve(__dirname, `./Dockerfile`), path.resolve('root/docker/docker-demo', './Dockerfile'))
 
         // 复制 .dockerignore 到项目目录
         fs.copyFileSync(path.resolve(__dirname, `./.dockerignore`), path.resolve(projectDir, './.dockerignore'))
